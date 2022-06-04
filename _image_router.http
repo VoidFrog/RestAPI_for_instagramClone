@@ -19,17 +19,52 @@ nazwa_albumu
 GET http://localhost:3000/api/photos HTTP/1.1
 
 ### GET - json pliku o konkretnym id
-GET http://localhost:3000/api/photos/1654021311169 HTTP/1.1
+GET http://localhost:3000/api/photos/1654193669790 HTTP/1.1
+
+### GET - img tags
+GET http://localhost:3000/api/photos/tags/1654193669790 HTTP/1.1
 
 ### PATCH - updatuj wg id
 PATCH http://localhost:3000/api/photos HTTP/1.1
 content-type: application/json
 
 {
-  "id": 1654021311169,
+  "id": 1654175839428,
   "status": "zmienione 1",
   "timestamp": 2137213721372137
 }
 
 ### DELETE - usuń wg id
 DELETE http://localhost:3000/api/photos/1654021325893 HTTP/1.1
+
+### PATCH - add tag to img
+PATCH http://localhost:3000/api/photos/tags HTTP/1.1
+content-type: application/json
+
+{
+  "id": 1654118570744,
+  "name": "#nowytag",
+  "popularity": 2137 
+}
+
+### PATCH - add array of tags to img
+PATCH http://localhost:3000/api/photos/tags/mass HTTP/1.1
+content-type: application/json
+
+{
+  "id": 1654175839428,
+  "tags": [
+    {
+      "name": "#nowytag",
+      "popularity": 2137 
+    },
+    {
+      "name": "#nowytag1",
+      "popularity": 1337 
+    },
+    {
+      "name": "#nowytag2",
+      "popularity": 80084 
+    }
+  ]
+}

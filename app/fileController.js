@@ -56,6 +56,33 @@ function delete_file(file_id, FILES){
     }   
 }
 
+function get_file(req, url, id, filter, FILES){
+    let file = jsonController.get_file_by_id(id, FILES)
+    
+    if(file){
+        let history = file.history
+        let searched_path;
 
+        
+        for(let record of history){
+            if(record.status == filter){
+                searched_path = record.url
+            }
+        }
+        
+        console.log(searched_path, filter)
+        
+        return new Promise((resolve, reject) => {
+            try {
+                fs.readFile(searched_path, function (error, data) {
+                    resolve(data);
+                })
+            }
+            catch (err) {
+                reject(err)
+            }
+        })
+    }
+}
 
-module.exports = { handle_file_upload, delete_file }
+module.exports = { handle_file_upload, delete_file, get_file }

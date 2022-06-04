@@ -1,0 +1,22 @@
+### - returns available methods
+GET http://localhost:3000/api/filters HTTP/1.1
+
+### GET - returns file's metadata
+GET http://localhost:3000/api/filters/metadata/1654192250823 HTTP/1.1
+
+### PATCH - apply filter to an image and create it's copy
+PATCH http://localhost:3000/api/filters HTTP/1.1
+content-type: application/json
+
+{
+  "id": 1654200733415,
+  "name": "tint",
+  "args": [
+      123,
+      97,
+      44
+  ] 
+}
+
+### GET - get img to client 
+GET http://localhost:3000/api/photos/uploads/1654200733415/tint HTTP/1.1

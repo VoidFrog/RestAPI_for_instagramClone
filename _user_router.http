@@ -1,0 +1,26 @@
+### GET - users json
+GET http://localhost:3000/api/user HTTP/1.1
+
+### GET - confirmation with web token
+GET http://localhost:3000/api/user/confirm HTTP/1.1
+
+### GET - log in with and res token
+POST http://localhost:3000/api/user/login HTTP/1.1
+content-type: application/json
+
+{    
+   "email":"shadownn0000@gmail.com",
+   "password":"password"
+}
+
+### POST - register plus confirmation on mail
+POST http://localhost:3000/api/user/register HTTP/1.1
+content-type: application/json
+
+{    
+   "name": "name",
+   "lastName": "lastName",
+   "email":"shadownn0000@gmail.com",
+   "password":"password"
+}
+
